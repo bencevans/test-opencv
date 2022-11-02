@@ -27,9 +27,11 @@ jobs:
 
 
     steps:
+      - uses: actions/checkout@v3
       - run: git clone https://github.com/opencv/opencv.git && cd opencv && git checkout 4.6.0
       - run: mkdir -p opencv/build
       - run: cd opencv/build && cmake -DBUILD_SHARED_LIBS=off -DWITH_IPP=OFF -DOPENCV_FORCE_3RDPARTY_BUILD=on -DBUILD_LIST=core,dnn,imgcodecs -DCMAKE_INSTALL_PREFIX=install -DCMAKE_BUILD_TYPE=RELEASE -DWITH_OPENEXR=off -DWITH_TIFF=off -DWITH_WEBP=off -DWITH_OPENJPEG=off -DWITH_JASPER=off ..  && cmake --build . -j 8
-
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+      - run: cargo run
 
     
