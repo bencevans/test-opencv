@@ -1,11 +1,11 @@
-use std::env::var;
+use std::{env::var, path::PathBuf};
 
 fn main() {
     let manifest_dir = var("CARGO_MANIFEST_DIR").unwrap();
 
-    let lib_dir = format!("{}/opencv/build/3rdparty/lib", manifest_dir);
+    let lib_dir = PathBuf::from(manifest_dir).join(PathBuf::from("opencv/build/3rdparty/lib"));
 
-    println!("cargo:rustc-link-search={}", lib_dir);
+    println!("cargo:rustc-link-search={}", lib_dir.to_str().unwrap());
 
     for lib_file in std::fs::read_dir(lib_dir).unwrap() {
         let entry = lib_file.unwrap();
