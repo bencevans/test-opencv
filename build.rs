@@ -14,7 +14,7 @@ fn main() {
 
         println!(
             "cargo:rustc-link-lib={}",
-            lib.strip_prefix("lib").unwrap().replace(".a", "")
+            lib.strip_prefix("lib").unwrap()
         );
     }
 
