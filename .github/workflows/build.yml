@@ -105,15 +105,15 @@ jobs:
           default: true
 
       - name: Test project
-        run: ci/script.sh
+        run: cargo run
         shell: bash
 
-      - name: Upload bindings if test failed
-        uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: generated-failed-bindings-${{ runner.os }}-vcpkg-${{ matrix.version.vcpkg }}
-          path: src/opencv
+      # - name: Upload bindings if test failed
+      #   uses: actions/upload-artifact@v3
+      #   if: failure()
+      #   with:
+      #     name: generated-failed-bindings-${{ runner.os }}-vcpkg-${{ matrix.version.vcpkg }}
+      #     path: src/opencv
 
   # bin:
   #   strategy:
