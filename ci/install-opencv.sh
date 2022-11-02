@@ -24,5 +24,5 @@ export VCPKG_DEFAULT_TRIPLET=x64-windows-static
 #./vcpkg install llvm  # takes very long time
 choco install -y llvm --version 15.0.1
 "$VCPKG_ROOT/vcpkg" upgrade --no-dry-run
-"$VCPKG_ROOT/vcpkg" install --recurse "opencv${VCPKG_OPENCV_VERSION}[contrib,nonfree]"
+"$VCPKG_ROOT/vcpkg" install --recurse "opencv${VCPKG_OPENCV_VERSION}[dnn]"
 popd
