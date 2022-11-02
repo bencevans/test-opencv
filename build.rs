@@ -3,7 +3,7 @@ use std::{env::var, path::PathBuf};
 fn main() {
     let manifest_dir = var("CARGO_MANIFEST_DIR").unwrap();
 
-    let lib_dir = PathBuf::from(manifest_dir).join(PathBuf::from("opencv/build/3rdparty/lib"));
+    let lib_dir = PathBuf::from(manifest_dir).join(PathBuf::from("opencv\\build\\3rdparty\\lib"));
 
     println!("cargo:rustc-link-search={}", lib_dir.to_str().unwrap());
 
