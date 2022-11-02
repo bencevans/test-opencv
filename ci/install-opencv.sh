@@ -20,7 +20,7 @@ git checkout "$VCPKG_TREE_COMMIT"
 echo "set(VCPKG_BUILD_TYPE release)" >> "$VCPKG_ROOT/triplets/x64-windows.cmake"
 echo "set(VCPKG_BUILD_TYPE release)" >> "$VCPKG_ROOT/triplets/x64-windows-static.cmake"
 echo "set(VCPKG_BUILD_TYPE release)" >> "$VCPKG_ROOT/triplets/x86-windows.cmake"
-export VCPKG_DEFAULT_TRIPLET=x64-windows
+export VCPKG_DEFAULT_TRIPLET=x64-windows-static
 #./vcpkg install llvm  # takes very long time
 choco install -y llvm --version 15.0.1
 "$VCPKG_ROOT/vcpkg" upgrade --no-dry-run
