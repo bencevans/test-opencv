@@ -24,7 +24,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - run: vcpkg integrate install
+      - name: Restore artifacts, or setup vcpkg (do not install any package)
+        uses: lukka/run-vcpkg@v10
 
       - run: vcpkg install opencv4[dnn] --triplet x64-windows-static
         if: runner.os == 'Windows'
