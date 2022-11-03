@@ -23,7 +23,7 @@ jobs:
           - os: macos-11
             triplet: x64-osx-release
           - os: windows-2022
-            triplet: x64-windows-static-release
+            triplet: x64-windows-static
     
     runs-on: ${{ matrix.config.os }}
 
