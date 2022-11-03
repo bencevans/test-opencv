@@ -17,7 +17,13 @@ jobs:
       fail-fast: false
 
       matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
+        config:
+          - os: ubuntu-20.04
+            triplet: x64-linux-release
+          - os: macos-11
+            triplet: x64-osx-release
+          - os: windows-2022
+            triplet: x64-windows-static-release
     
     runs-on: ${{ matrix.os }}
 
@@ -29,14 +35,8 @@ jobs:
         with:
           vcpkgGitCommitId: 49931943abe2a22dd9d91be2c4928ead56349b14
 
-      - run: vcpkg install opencv4[dnn] --triplet x64-windows-static
-        if: runner.os == 'Windows'
+      - name: Build OpenCV 4
+        run: vcpkg install opencv4[dnn] --triplet ${{ matrix.os }}
 
-      - run: vcpkg install opencv4[dnn]
-        if: runner.os == 'macOS'
-        
-      - run: vcpkg install opencv4[dnn]
-        if: runner.os == 'Linux'
-
-
-      - run: OPENCV_DISABLE_PROBES=pkg_config,cmake cargo build
+      - name: Run Rust App
+        run: OPENCV_DISABLE_PROBES=pkg_config,cmake cargo build
