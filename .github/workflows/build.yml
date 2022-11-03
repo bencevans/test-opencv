@@ -25,7 +25,7 @@ jobs:
           - os: windows-2022
             triplet: x64-windows-static-release
     
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.config.os }}
 
     steps:
       - uses: actions/checkout@v3
@@ -36,7 +36,7 @@ jobs:
           vcpkgGitCommitId: 49931943abe2a22dd9d91be2c4928ead56349b14
 
       - name: Build OpenCV 4
-        run: vcpkg install opencv4[dnn] --triplet ${{ matrix.os }}
+        run: vcpkg install opencv4[dnn] --triplet ${{ matrix.config.triplet }}
 
       - name: Run Rust App
         run: OPENCV_DISABLE_PROBES=pkg_config,cmake cargo build
