@@ -27,8 +27,11 @@ jobs:
       - run: vcpkg install opencv4[dnn] --triplet x64-windows-static
         if: runner.os == 'Windows'
 
-      - run: vcpkg install opencv[dnn]
+      - run: vcpkg install opencv4[dnn]
         if: runner.os == 'macOS'
+        
+      - run: vcpkg install opencv4[dnn]
+        if: runner.os == 'Linux'
 
 
       - run: OPENCV_DISABLE_PROBES=pkg_config,cmake cargo build
