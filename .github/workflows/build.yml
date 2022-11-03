@@ -43,4 +43,4 @@ jobs:
         run: vcpkg install opencv4[dnn] --triplet ${{ matrix.config.triplet }} --vcpkg-root ${{ env.VCPKG_ROOT }}
 
       - name: Run Rust App
-        run: OPENCV_DISABLE_PROBES=pkg_config,cmake cargo build
+        run: OPENCV_DISABLE_PROBES=pkg_config,cmake cargo run
