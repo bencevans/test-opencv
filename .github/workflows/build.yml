@@ -35,10 +35,10 @@ jobs:
         with:
           vcpkgGitCommitId: 49931943abe2a22dd9d91be2c4928ead56349b14
           
-      - run: ${{ env.VCPKG_ROOT }}/vcpkg.exe integrate install --vcpkg-root '${{ env.VCPKG_ROOT }}"
+      - run: ${{ env.VCPKG_ROOT }}/vcpkg.exe integrate install --vcpkg-root "${{ env.VCPKG_ROOT }}"
         if: runner.os == 'Windows'
         
-      - run: ${{ env.VCPKG_ROOT }}/vcpkg integrate install --vcpkg-root '${{ env.VCPKG_ROOT }}"
+      - run: ${{ env.VCPKG_ROOT }}/vcpkg integrate install --vcpkg-root "${{ env.VCPKG_ROOT }}"
         if: runner.os != 'Windows'
           
       - name: Install System Dependencies
