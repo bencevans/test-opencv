@@ -34,6 +34,10 @@ jobs:
         uses: lukka/run-vcpkg@v10
         with:
           vcpkgGitCommitId: 49931943abe2a22dd9d91be2c4928ead56349b14
+          
+      - name: Install System Dependencies
+        run: sudo apt-get update && sudo apt-get install -y libdbus-1 libxi-dev libxtst-dev
+        if: runner.os == 'Linux'
 
       - name: Build OpenCV 4
         run: vcpkg install opencv4[dnn] --triplet ${{ matrix.config.triplet }}
