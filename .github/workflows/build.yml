@@ -26,6 +26,8 @@ jobs:
       
       - name: Restore artifacts, or setup vcpkg (do not install any package)
         uses: lukka/run-vcpkg@v10
+        with:
+          vcpkgGitCommitId: 49931943abe2a22dd9d91be2c4928ead56349b14
 
       - run: vcpkg install opencv4[dnn] --triplet x64-windows-static
         if: runner.os == 'Windows'
