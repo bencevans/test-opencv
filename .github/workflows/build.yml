@@ -44,3 +44,16 @@ jobs:
 
       - name: Run Rust App
         run: OPENCV_DISABLE_PROBES=pkg_config,cmake cargo run
+        
+      - name: Print Linkage (ldd)
+        if: runner.os == 'Linux'
+        run: ldd target/debug/test-opencv
+        
+      - name: Print Linkage (otool -L)
+        if: runner.os == 'macOS'
+        run: otool -L target/debug/test-opencv
+        
+      - name: Print Linkage (otool -L)
+        if: runner.os == 'Windows'
+        run: dumpbin /IMPORTS:target/debug/test-opencv.exe
+        
