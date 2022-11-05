@@ -68,7 +68,7 @@ jobs:
           VCPKG_DEFAULT_TRIPLET: ${{ matrix.config.triplet }} 
 
       - name: Run Rust App
-        run: OPENCV_DISABLE_PROBES=pkg_config,cmake cargo run
+        run: cargo run
         
       - name: Print Linkage (ldd)
         if: runner.os == 'Linux'
