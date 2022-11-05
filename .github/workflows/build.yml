@@ -39,11 +39,11 @@ jobs:
         if: runner.os == 'Windows'
         
       - name: llvm path
-        run: echo "/C/Program Files/LLVM/bin" >> $GITHUB_PATH
+        run: echo "/c/Program Files/LLVM/bin" >> $GITHUB_PATH
         if: runner.os == 'Windows'
         
       - name: libclang path
-        run: echo 'LIBCLANG_PATH="/C/Program Files/LLVM/lib"' >> $GITHUB_ENV
+        run: echo 'LIBCLANG_PATH="/c/Program Files/LLVM/bin"' >> $GITHUB_ENV
         if: runner.os == 'Windows'
 
       - name: Restore artifacts, or setup vcpkg (do not install any package)
