@@ -36,6 +36,9 @@ jobs:
             triplet: x64-windows
     
     runs-on: ${{ matrix.config.os }}
+    
+    env:
+      VCPKGRS_DYNAMIC: 1
 
     steps:
       - uses: actions/checkout@v3
