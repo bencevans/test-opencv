@@ -54,7 +54,7 @@ jobs:
           VCPKG_DEFAULT_TRIPLET: ${{ matrix.config.triplet }}
           
       - name: Install OpenCV 4
-        run: vcpkg install opencv4[dnn]
+        run: vcpkg install opencv4[dnn] --triplet ${{ matrix.config.triplet }}
           
       - name: Print Paths
         run: |
