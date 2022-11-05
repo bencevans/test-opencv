@@ -50,9 +50,11 @@ jobs:
         uses: lukka/run-vcpkg@v10
         with:
           vcpkgGitCommitId: 49931943abe2a22dd9d91be2c4928ead56349b14
-          runVcpkgInstall: true
         env:
           VCPKG_DEFAULT_TRIPLET: ${{ matrix.config.triplet }}
+          
+      - name: Install OpenCV 4
+        run: vcpkg install opencv4[dnn]
           
       - name: Print Paths
         run: |
