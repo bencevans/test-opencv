@@ -24,6 +24,16 @@ jobs:
             triplet: x64-osx
           - os: windows-2022
             triplet: x64-windows-static-md
+          - os: windows-2022
+            triplet: x64-windows-static
+          - os: windows-2022
+            triplet: x64-windows
+          - os: windows-2019
+            triplet: x64-windows-static-md
+          - os: windows-2019
+            triplet: x64-windows-static
+          - os: windows-2019
+            triplet: x64-windows
     
     runs-on: ${{ matrix.config.os }}
 
