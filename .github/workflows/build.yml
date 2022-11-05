@@ -50,7 +50,15 @@ jobs:
       - name: Install llvm
         run: choco install -y llvm --version 15.0.1
         if: runner.os == 'Windows'
-      
+        
+      - name: llvm path
+        run: echo "/C/Program Files/LLVM/bin" >> $GITHUB_PATH
+        if: runner.os == 'Windows'
+        
+      - name: libclang path
+        run: echo 'LIBCLANG_PATH="/C/Program Files/LLVM/bin"' >> $GITHUB_ENV
+        if: runner.os == 'Windows'
+
       - name: Restore artifacts, or setup vcpkg (do not install any package)
         uses: lukka/run-vcpkg@v10
         with:
