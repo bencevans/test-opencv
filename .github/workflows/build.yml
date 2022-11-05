@@ -47,7 +47,7 @@ jobs:
         if: runner.os == 'Windows'
 
       - name: Install OpenCV 4
-        run: vcpkg install opencv4[dnn] --triplet ${{ matrix.config.triplet }}
+        run: $VCPKG_ROOT/vcpkg install opencv4[dnn] --triplet ${{ matrix.config.triplet }}
           
       - name: Print Paths
         run: |
