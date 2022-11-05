@@ -34,6 +34,9 @@ jobs:
       - name: Install llvm
         run: choco install -y llvm --version 15.0.1
         if: runner.os == 'Windows'
+
+      - name: Install vcpkg
+        run: bash install-vcpkg.sh
         
       - name: llvm path
         run: echo "C:\Program Files\LLVM\bin" >> $GITHUB_PATH
@@ -43,13 +46,6 @@ jobs:
         run: echo 'LIBCLANG_PATH="C:\Program Files\LLVM\bin"' >> $GITHUB_ENV
         if: runner.os == 'Windows'
 
-      - name: Restore artifacts, or setup vcpkg (do not install any package)
-        uses: lukka/run-vcpkg@v10
-        with:
-          vcpkgGitCommitId: 49931943abe2a22dd9d91be2c4928ead56349b14
-        env:
-          VCPKG_DEFAULT_TRIPLET: ${{ matrix.config.triplet }}
-          
       - name: Install OpenCV 4
         run: vcpkg install opencv4[dnn] --triplet ${{ matrix.config.triplet }}
           
